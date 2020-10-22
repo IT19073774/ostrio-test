@@ -1,0 +1,84 @@
+<div class="mainContent">
+    <div style="float: left; width:250px; ">
+        <div class="cardTemplate" style="margin-bottom: 10px;" (click)="open()">
+            <p style="float:left;font-size: 20px;margin: 15px;">Number of<br>Accounts<br>Owned</p>
+            <p style="float:right;font-size: 80px;margin: 5px;">{{accSize}}</p>
+        </div>
+        <div class="cardTemplate" style="margin-bottom: 10px;">
+            <p style="float:left;font-size: 20px;margin: 15px;">Number of<br>Credit Cards<br>Owned</p>
+            <p style="float:right;font-size: 80px;margin: 5px;">02</p>
+        </div>
+    </div>
+</div>
+
+<div class="backShader" [style.display]="isPopup ? 'block' : 'none'">
+    <span class="close" (click)="close()">&times;</span>
+    <div class="PatDetail">
+        <div style="width:100%; height:140px; overflow: auto; margin-left:8px;">
+            <table style="padding-left:0;">
+                <td *ngFor="let acc of this.accounts">
+                    <div class="appointmentTemplate" (click)="openAcc(acc.accountNo)">
+                        <a>Acc No : {{acc.accountNo}}</a><br>
+                        <a style="color:grey;">{{acc.type}}</a><br>
+                        <a style="color:rgba(13,149,176,1); font-weight: bold;float: right;">LKR {{acc.balance}}</a>                        
+                    </div>
+                </td>
+            </table>
+            
+        </div>
+
+        <div class="tab">
+            <button class="tablinks active" (click)="openTab($event, 'transaction')">My Transactions</button>
+            <button class="tablinks" (click)="openTab($event, 'detail')">Account Detail</button>
+          </div>
+          <hr style="border:solid 2px #ddd">
+          <div id="transaction" class="tabcontentMain">
+            <div style="height: 300px; overflow: auto;">
+            <table class="result">
+              <tr>
+                  <th>Transaction ID</th>
+                  <th>Sender Account</th>
+                  <th>Reciever Account</th>
+                  <th>Type</th>
+                  <th>Ammount</th>
+              </tr>
+              <tr *ngFor="let trans of this.transactions">
+                <td>{{trans.transactionID}}</td>
+                <td>{{trans.sAccount}}</td>
+                <td>{{trans.rAccount}}</td>
+                <td>{{trans.type}}</td>
+                <td>{{trans.ammount}}</td>
+              </tr>
+            </table>
+          </div>
+          </div>
+
+          <div id="detail" class="tabcontent">
+            <div style="height: 300px; overflow: auto;">
+            <table class="result">
+              <tr>
+                  <th>Account ID</th>
+                  <td>{{specificAcc.accountNo}}</td>
+              </tr>
+              <tr>
+                <th>Opened Date</th>
+                <td>{{specificAcc.openedDate}}</td>
+            </tr>
+            <tr>
+                <th>Last TransactionDate</th>
+                <td>{{specificAcc.lTransactionDate}}</td>
+            </tr>
+            <tr>
+                <th>Branch Name</th>
+                <td>{{specificAcc.branchName}}</td>
+            </tr>
+            <tr>
+                <th>Balance</th>
+                <td>{{specificAcc.balance}}</td>
+            </tr>
+            </table>
+          </div>
+          </div>
+
+    </div>
+</div> 

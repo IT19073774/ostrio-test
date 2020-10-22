@@ -1,0 +1,57 @@
+
+<div class="backgroundRec" *ngIf="service.isAuthenticated"></div>
+<div class="mainContent" *ngIf="service.isAuthenticated" style="background-color:rgba(13,149,176,0.8); z-index:11;left:7.3%;"></div>
+
+<div *ngIf="service.isAuthenticated">
+  <div class="header">
+    <img src="assets/img/LOGOd.png" alt="AGT BANK LOGO" width="15%" class="logoclass">
+    <div class="notiIcon" title="NOTIFICATION">
+      <img src="assets/img/notiIcon.png" alt="Notification Icon" width="100%">
+      <span class="notiAlert" style="display: none;">2</span>
+    </div>
+    <div class="profileBlock">
+      <div class="profile">
+        <img src="assets/img/profile-avatar.jpg" alt="PROFILE AVATAR" width="20%" class="profileAvatar">
+        <div class="logoutMenu">
+          <a>Profile</a>
+          <a>Settings</a>
+          <hr style="margin-top:15%;margin-bottom:2%;">
+          <a class="logout" >Logout</a>
+        </div>
+      </div>
+  
+      <div class="subProfileBlock">
+        <a class="userName">{{service.isSessionUserName}}</a><br>
+        <a class="userType">{{service.isSessionUserNo}}</a>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="mainContent" style="background-color :#ffffff; height:5%; width:90%;box-shadow:none;padding:0;"></div>
+  <footer class="footer">
+    <div style="float:left;">
+      <a>24/7 Church Road, Kepungoda</a><br>
+      <a>+94 071 652 2177 / +94 076 378 1644</a><br>
+      <a>AGT BANK Holdings PLC @2020, All Rights Reserved</a><br>
+    </div>
+    <div class="" style="margin-top:0.5%;">
+      <img src="assets/img/linkedinLOGO.png" alt="Linkedin LOGO" width="15%" class="socialMediaclass" title="LinkedIn">
+      <img src="assets/img/twitterLOGO.png" alt="Twitter LOGO" width="15%" class="socialMediaclass" title="Twitter">
+      <img src="assets/img/fbLOGO.png" alt="Facebook LOGO" width="15%" class="socialMediaclass" title="Facebook">
+    </div>
+  </footer>
+  </div>
+  <div class="navigation" *ngIf="service.isAuthenticated">
+
+    <div class="naviIcon" title="Dashboard" routerLink="dashboard">
+      <img src="assets/img/dashboardicon.png" alt="Dashboard Icon" width="100%">
+    </div>
+    <div class="naviIcon" title="Operational Tab" routerLink="operations">
+      <img src="assets/img/operationsicon.png" alt="operations Icon" width="100%">
+    </div>
+  </div>
+
+
+  <router-outlet></router-outlet>
+
